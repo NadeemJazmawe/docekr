@@ -62,5 +62,5 @@ jobs:
         with:
           context: ./Ginger/GingerRuntime
           push: true
-          tags: Ginger:${{github.event.inputs.Version}}
+          tags: ginger:${{github.event.inputs.Version}}
           labels: ${{ steps.meta.outputs.labels }}
