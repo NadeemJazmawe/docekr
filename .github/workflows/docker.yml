@@ -1,4 +1,4 @@
-name: dockerdemo
+name: docker
 
 on:
   workflow_dispatch: 
@@ -37,6 +37,11 @@ jobs:
       - name: Log in to the Container registry
         run: | 
           docker images
+          
+          
+      - name: Log in to the Container registry
+        run: | 
+          docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} 
 
 #       - name: Extract metadata (tags, labels) for Docker
 #         id: meta
