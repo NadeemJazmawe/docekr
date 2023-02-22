@@ -42,6 +42,11 @@ jobs:
       - name: Log in to the Container registry
         run: | 
           docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} 
+          
+      - name: Log in to the Container registry
+        run: | 
+          docker push ginger:123.123.123
+
 
 #       - name: Extract metadata (tags, labels) for Docker
 #         id: meta
