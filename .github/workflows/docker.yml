@@ -6,11 +6,6 @@ on:
       Version:
         type: string 
         required: true
-  workflow_call:
-#     inputs:
-#       Version:
-#         type: string 
-#         required: true
   
 env:
   REGISTRY: ghcr.io
@@ -35,23 +30,13 @@ jobs:
 # ------------------------------------------------------------------------------------------------------
 # Build Docker && Release it to Packages
 # ------------------------------------------------------------------------------------------------------    
-
-
-
-
-# jobs:
-#   build-and-push-image:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       packages: write
-
-
       - name: Log in to the Container registry
-        run: | docker build -t ginger:${{github.event.inputs.Version}} .
+        run: | 
+          docker build -t ginger:${{github.event.inputs.Version}} .
         
       - name: Log in to the Container registry
-        run: | docker images
+        run: | 
+          docker images
 
 #       - name: Extract metadata (tags, labels) for Docker
 #         id: meta
