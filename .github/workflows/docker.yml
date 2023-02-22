@@ -32,11 +32,12 @@ jobs:
 # ------------------------------------------------------------------------------------------------------    
       - name: Log in to the Container registry
         run: | 
-          docker build -t ginger:${{github.event.inputs.Version}} .
+          docker build -t ginger .
         
       - name: Log in to the Container registry
-        run: | 
-          docker images
+        run: |
+          docker tag ginger ghcr.io/${{ github.actor }}/ginger:${{github.event.inputs.Version}}
+          docker images 
           
           
       - name: Log in to the Container registry
@@ -45,7 +46,7 @@ jobs:
           
       - name: Log in to the Container registry
         run: | 
-          docker push ginger:123.123.123
+          docker push ghcr.io/${{ github.actor }}/ginger:${{github.event.inputs.Version}}
 
 
 #       - name: Extract metadata (tags, labels) for Docker
