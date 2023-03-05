@@ -19,7 +19,7 @@ on:
       revision:
         type: string 
         required: true
-        default: '${{ github.event.inputs.build}}'
+        default: '23.8.1.5'
         
   workflow_call:
 #     inputs:
