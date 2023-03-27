@@ -73,6 +73,13 @@ jobs:
           echo $VER
           echo "::set-env name=VER::2023.1-Alpha 0.1"
           echo $VER
+          
+      - name: Update environment variable value1
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+        run: |          
+          echo ${{ env.GINGERVER }}
+          echo "::set-env name=env.GINGERVER::2023.1-Alpha 1.1"
 
 #       - name: Extract metadata (tags, labels) for Docker
 #         id: meta
