@@ -41,28 +41,34 @@ jobs:
 # ------------------------------------------------------------------------------------------------------
 # Copy Ginger repo
 # ------------------------------------------------------------------------------------------------------
-      - uses: actions/checkout@v3
+#       - uses: actions/checkout@v3
 
 # ------------------------------------------------------------------------------------------------------
 # Build Docker && Release it to Packages
 # ------------------------------------------------------------------------------------------------------    
-      - name: Log in to the Container registry
-        run: | 
-          docker build -t ginger .
+#       - name: Log in to the Container registry
+#         run: | 
+#           docker build -t ginger .
         
-      - name: Log in to the Container registry
+#       - name: Log in to the Container registry
+#         run: |
+#           docker tag ginger ghcr.io/${{ github.actor }}/ginger:${{github.event.inputs.Version}}
+#           docker images 
+          
+          
+#       - name: Log in to the Container registry
+#         run: | 
+#           docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} 
+          
+#       - name: Log in to the Container registry
+#         run: | 
+#           docker push ghcr.io/${{ github.actor }}/ginger:${{github.event.inputs.Version}}
+
+
+      - name: Update environment variable value
         run: |
-          docker tag ginger ghcr.io/${{ github.actor }}/ginger:${{github.event.inputs.Version}}
-          docker images 
-          
-          
-      - name: Log in to the Container registry
-        run: | 
-          docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} 
-          
-      - name: Log in to the Container registry
-        run: | 
-          docker push ghcr.io/${{ github.actor }}/ginger:${{github.event.inputs.Version}}
+          echo $GINGERVER
+#          echo "::set-env name=ENVIRONMENT::new_value"
 
 
 #       - name: Extract metadata (tags, labels) for Docker
