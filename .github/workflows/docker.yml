@@ -67,6 +67,8 @@ jobs:
 
 
       - name: Update environment variable value
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run: |
           echo $VER
           echo "::set-env name=VER::2023.1-Alpha 0.1"
