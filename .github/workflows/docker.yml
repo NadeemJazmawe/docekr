@@ -85,7 +85,7 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run: |          
-          echo${{github.event.inputs.Version}}
+          echo ${{github.event.inputs.Version}}
           
       - name: create version environment variable
         if: ${{ github.event.inputs.build == 0 }}
