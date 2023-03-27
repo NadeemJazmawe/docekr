@@ -67,7 +67,7 @@ jobs:
 
       - name: Update environment variable value
         run: |
-          echo $GINGERVER
+          echo ${{ env.GINGERVER }}
 #          echo "::set-env name=ENVIRONMENT::new_value"
 
 
