@@ -68,7 +68,7 @@ jobs:
       - name: Update environment variable value
         run: |
           echo ${{ env.GINGERVER }}
-#          echo "::set-env name=ENVIRONMENT::new_value"
+          echo "::set-env name=env.GINGERVER::2023.1-Alpha 1.1"
 
 
 #       - name: Extract metadata (tags, labels) for Docker
