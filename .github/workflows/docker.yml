@@ -88,7 +88,7 @@ jobs:
           echo${{github.event.inputs.Version}}
           
       - name: create version environment variable
-        if: ${{ int(github.event.inputs.build) == 0 }}
+        if: ${{ github.event.inputs.build == 0 }}
         run: |
           echo "yes it is"
 
