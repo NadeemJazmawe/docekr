@@ -93,7 +93,7 @@ jobs:
           echo "yes it is"
           
       - name: create version environment variable
-        if: ${{ github.event.inputs.build == 0 && steps.SealightsMSBuild.outcome != 'success' }}
+        if: ${{ github.event.inputs.build == 0 }}
         run: |
           echo "yes it is"
 
