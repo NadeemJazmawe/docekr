@@ -11,15 +11,15 @@ on:
         required: true
         default: '23'
       minor:
-        type: string 
+        type: number 
         required: true
         default: '1'
       build:
-        type: string 
+        type: number 
         required: true
         default: '0'
       revision:
-        type: string 
+        type: number 
         required: true
         default: '0'
   
@@ -80,6 +80,17 @@ jobs:
         run: |          
           echo ${{ env.GINGERVER }}
           echo "::set-env name=env.GINGERVER::2023.1-Alpha 1.1"
+          
+      - name: print ${{github.event.inputs.Version}}
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+        run: |          
+          echo${{github.event.inputs.Version}}
+          
+      - name: create version environment variable
+        if: ${{ int(github.event.inputs.build) == 0 }}
+        run: |
+          echo "yes it is"
 
 #       - name: Extract metadata (tags, labels) for Docker
 #         id: meta
