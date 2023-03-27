@@ -26,6 +26,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  VER: 2023.1-Alpha 1.1
   
 jobs:
   build:
@@ -67,9 +68,9 @@ jobs:
 
       - name: Update environment variable value
         run: |
-          echo ${{ env.GINGERVER }}
-          echo "::set-env name=env.GINGERVER::2023.1-Alpha 1.1"
-
+          echo $VER
+          echo "::set-env name=VER::2023.1-Alpha 0.1"
+          echo $VER
 
 #       - name: Extract metadata (tags, labels) for Docker
 #         id: meta
