@@ -108,7 +108,7 @@ jobs:
         env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
         run: |
-          export  MY_VAR="${{ github.event.inputs.revision}}"
+          export  MY_VAR="${{ github.event.inputs.major}} + ${{ github.event.inputs.minor}} + ${{ github.event.inputs.build}} + ${{ github.event.inputs.revision}} "
           echo "${MY_VAR}"
 
 #       - name: Extract metadata (tags, labels) for Docker
