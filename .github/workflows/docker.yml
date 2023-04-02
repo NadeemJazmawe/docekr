@@ -113,7 +113,14 @@ jobs:
       - name: print environment variable
         run: |
           echo "${MY_VAR}"
-
+          
+          
+      - name: cahnge input value  
+        run: |
+          echo "${github.event.inputs.Version}"
+          export github.event.inputs.Version="${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}"
+          echo "${github.event.inputs.Version}"
+          
 #       - name: Extract metadata (tags, labels) for Docker
 #         id: meta
 #         uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
