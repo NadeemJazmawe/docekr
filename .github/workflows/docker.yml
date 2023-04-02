@@ -104,11 +104,14 @@ jobs:
         run: |
           echo $VER
           
-      - name: Update environment variable value
-        env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
+      - name: create environment variable 
         run: |
           export  MY_VAR="${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}"
+          echo "${MY_VAR}"
+          
+          
+      - name: print environment variable
+        run: |
           echo "${MY_VAR}"
 
 #       - name: Extract metadata (tags, labels) for Docker
