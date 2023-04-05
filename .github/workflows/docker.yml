@@ -33,22 +33,26 @@ jobs:
     runs-on: ubuntu-latest
     
     outputs:
-      version_number: ${{ steps.versionnum.outputs.number }}
+      version_number: ${{ steps.version.outputs.number }}
+      version_tag: ${{ steps.version.outputs.tag }}
     
     steps:           
       - name: print ${{github.event.inputs.Version}}
         run: |          
           echo ${{github.event.inputs.Version}}
           
-      - name: create version environment variable
+      - name: create version environment variable - ALPHA
         if: ${{ github.event.inputs.revision != 0 }}
         run: |
           echo "yes it is"
+          echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
+
           
       - name: create version environment variable
         if: ${{ github.event.inputs.revision == 0 }}
         run: |
           echo "yes it is"
+          
           
       - name: Update environment variable value
         env:
@@ -67,10 +71,10 @@ jobs:
 #           echo "${MY_VAR}"
           
       - name: create environment variable 
-        id: versionnum
+        id: version
         run: |
           echo "number=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_OUTPUT
-          echo "number2=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
+          echo "tag=${{ env.gingertag}}" >> $GITHUB_OUTPUT
 
       - name: print environment variable
         run: |
