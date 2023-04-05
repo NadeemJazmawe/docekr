@@ -52,7 +52,7 @@ jobs:
           echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}-Beta ${{ github.event.inputs.build}}" >> $GITHUB_ENV
 
       - name: create version environment variable - Release
-        if: ${{ github.event.inputs.build == 0 }} && ${{ github.event.inputs.revision == 0 }} 
+        if: ${{ (github.event.inputs.build == 0 ) && ( github.event.inputs.revision == 0) }} 
         run: |
           echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}-Official" >> $GITHUB_ENV
 
