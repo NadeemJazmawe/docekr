@@ -103,6 +103,7 @@ jobs:
       - create_variables
     steps:              
         - run : echo ${{ needs.create_variables.outputs.version_number}}
+        - run : echo ${{ needs.create_variables.outputs.version_tag}}
 #       - name: cahnge input value  
 #         run: |
 #           echo "${github.event.inputs.Version}"
