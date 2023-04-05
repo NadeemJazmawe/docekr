@@ -44,14 +44,18 @@ jobs:
       - name: create version environment variable - ALPHA
         if: ${{ github.event.inputs.revision != 0 }}
         run: |
-          echo "yes it is"
+          echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
+          
+      - name: create version environment variable - BETA
+        if: ( ${{ github.event.inputs.build != 0 }} && ${{ github.event.inputs.revision == 0 }} )
+        run: |
           echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
 
-          
-      - name: create version environment variable
-        if: ${{ github.event.inputs.revision == 0 }}
+      - name: create version environment variable - Release
+        if: ( ${{ github.event.inputs.build == 0 }} && ${{ github.event.inputs.revision == 0 }} )
         run: |
-          echo "yes it is"
+          echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
+
           
           
       - name: Update environment variable value
