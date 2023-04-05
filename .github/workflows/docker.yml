@@ -83,6 +83,10 @@ jobs:
     needs: create_variables
     steps:              
         - run : echo ${{ needs.create_variables.outputs.version_number}}
+        
+        - name: print environment variable
+          run: |
+            echo "${{ env.number2}}"
 #       - name: cahnge input value  
 #         run: |
 #           echo "${github.event.inputs.Version}"
