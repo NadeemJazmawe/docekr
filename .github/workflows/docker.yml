@@ -71,12 +71,17 @@ jobs:
         run: |
           echo "number=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_OUTPUT
 
-      - name: create environment variable
-        run: |
-          echo ${{ create_variables.outputs.version_number}}
+#       - name: create environment variable
+#         run: |
+#           echo ${{ create_variables.outputs.version_number}}
       
        #          echo "::set-output name=number::${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}"
-   
+
+  print_variables:
+    runs-on: ubuntu-latest
+    needs: create_variables
+    steps:              
+        - run : echo ${{ needs.create_variables.outputs.version_number}}
 #       - name: cahnge input value  
 #         run: |
 #           echo "${github.event.inputs.Version}"
