@@ -73,7 +73,7 @@ jobs:
 
       - name: create environment variable
         run: |
-          echo ${{ outputs.version_number}}
+          echo ${{ create_variables.outputs.version_number}}
       
        #          echo "::set-output name=number::${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}"
    
