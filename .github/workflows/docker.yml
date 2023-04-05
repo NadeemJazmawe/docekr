@@ -62,18 +62,18 @@ jobs:
           echo "${MY_VAR}"
           
           
-      - name: print environment variable
-        run: |
-          echo "${MY_VAR}"
+#       - name: print environment variable
+#         run: |
+#           echo "${MY_VAR}"
           
       - name: create environment variable 
         id: versionnum
         run: |
           echo "number=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_OUTPUT
 
-      - name: create environment variable
+      - name: print environment variable
         run: |
-          echo ${{ env.number}}
+          echo "${{ env.number}}"
       
        #          echo "::set-output name=number::${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}"
 
