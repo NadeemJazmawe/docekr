@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: print_variables
     steps:              
-        - run : echo ${{ needs.create_variables.outputs.version_number}}
+        - run : echo ${{ jobs.create_variables.outputs.version_number}}
 #       - name: cahnge input value  
 #         run: |
 #           echo "${github.event.inputs.Version}"
