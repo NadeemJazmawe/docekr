@@ -140,9 +140,12 @@ jobs:
         shell: bash
         run: |
           source version.txt
+          echo $TAG
+          echo "gingertag=$TAG" >> $GITHUB_ENV
+
   
       - name: Use cached variables
         run: |
-         echo %NUMBER 
-         echo %TAG%
+         echo %gingertag 
+         echo %gingertag%
 
