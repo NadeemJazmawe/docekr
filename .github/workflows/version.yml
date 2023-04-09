@@ -136,7 +136,6 @@ jobs:
           type version.txt
           
       - name: Use cached variables
-        shell: pwsh
         run: |
           FOR /F %a in ('type version.txt') do @(set %a)
     #      echo %NUMBER 
