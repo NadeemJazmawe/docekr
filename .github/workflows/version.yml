@@ -106,14 +106,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: create_variables
     steps:              
-        - run : echo ${{ needs.create_variables.outputs.version_number}}
-
-  print_variables3:  
-    runs-on: ubuntu-latest
-    needs: 
-      - print_variables
-      - create_variables
-    steps:              
-        - run : echo ${{ needs.create_variables.outputs.version_number}}
-        - run : echo ${{ needs.create_variables.outputs.version_tag}}
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ginger-version
+      - name: print version variable text file
+        run: |
+          cat version.txt
 
