@@ -138,7 +138,7 @@ jobs:
       - name: Use cached variables
         shell: pwsh
         run: |
-          FOR /F %a in (version.txt) do set %a
-          echo %NUMBER 
-          echo %TAG%
+          for /f %a in (version.txt) do set %a
+    #      echo %NUMBER 
+     #     echo %TAG%
 
