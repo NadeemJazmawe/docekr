@@ -1,0 +1,2 @@
+MY_VARIABLE=hello world
+ANOTHER_VARIABLE=42
