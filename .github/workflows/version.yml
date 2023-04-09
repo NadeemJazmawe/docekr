@@ -120,7 +120,6 @@ jobs:
         uses: actions/cache@v2
         with:
           path: version.txt
-          key: ${{ runner.os }}-variables-${{ hashFiles('version.txt') }}
           
       - name: Use cached variables
         run: |
