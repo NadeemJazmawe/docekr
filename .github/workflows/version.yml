@@ -138,7 +138,7 @@ jobs:
       - name: Use cached variables
         shell: cmd
         run: |
-          for /F %a in (version.txt) do 'set %a'
+          for /F %a in (version.txt) do @(set %a)
     #      echo %NUMBER 
      #     echo %TAG%
 
