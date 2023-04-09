@@ -137,7 +137,7 @@ jobs:
           
       - name: Use cached variables
         run: |
-          FOR /F %a in ('type version.txt') do @(set %a)
+          for /f %i in ('type version.txt') do @(set %i)
     #      echo %NUMBER 
      #     echo %TAG%
 
