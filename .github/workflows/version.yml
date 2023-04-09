@@ -138,4 +138,6 @@ jobs:
       - name: Use cached variables
         run: |
           FOR /F %a in (version.txt) do set %a
+          echo %NUMBER 
+          echo %TAG%
 
