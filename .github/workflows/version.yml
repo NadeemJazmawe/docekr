@@ -120,4 +120,24 @@ jobs:
           source version.txt
           echo $NUMBER 
           echo $TAG
+  
+  
+  print_variables_windows:
+    runs-on: windows-latest
+    needs: create_variables
+    steps:              
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: ginger-version
+          
+      - name: print version variable text file
+        run: |
+          type version.txt
+          
+      - name: Use cached variables
+        run: |
+          source version.txt
+          echo %NUMBER 
+          echo $TAG
 
