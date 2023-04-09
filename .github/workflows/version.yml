@@ -115,23 +115,6 @@ jobs:
         run: |
           cat version.txt
           
-          
-          
-      - name: Restore cached variables
-        uses: actions/cache@v2
-        with:
-          path: variables.txt
-          key: ${{ runner.os }}-variables-${{ hashFiles('variables.txt') }}
-      - name: Use cached variables
-        run: echo $MY_VARIABLE && echo $ANOTHER_VARIABLE
-        
-          
-#       - name: Restore cached variables
-#         uses: actions/cache@v2
-#         with:
-#           path: ./version.txt
-#           key: ${{ runner.os }}-variables-${{ hashFiles('version.txt') }}
-          
       - name: Use cached variables
         run: |
           source version.txt
