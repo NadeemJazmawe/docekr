@@ -29,6 +29,17 @@ env:
   VER: 2023.1-Alpha 1.1
   
 jobs:
+
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache variables
+        uses: actions/cache@v2
+        with:
+          path: variables.txt
+          key: ${{ runner.os }}-variables-${{ hashFiles('variables.txt') }}
+          
+          
   create_variables:
     runs-on: ubuntu-latest
     
