@@ -33,12 +33,14 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Cache variables
+      - name: Restore cached variables
         uses: actions/cache@v2
         with:
           path: variables.txt
           key: ${{ runner.os }}-variables-${{ hashFiles('variables.txt') }}
-          
+      - name: Use cached variables
+        run: source variables.txt && echo $MY_VARIABLE && echo $ANOTHER_VARIABLE
+        
           
   create_variables:
     runs-on: ubuntu-latest
