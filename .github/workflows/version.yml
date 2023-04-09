@@ -110,7 +110,20 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: ginger-version
+          
       - name: print version variable text file
         run: |
           cat version.txt
+          
+          
+      - name: Restore cached variables
+        uses: actions/cache@v2
+        with:
+          path: variables.txt
+          key: ${{ runner.os }}-variables-${{ hashFiles('variables.txt') }}
+          
+      - name: Use cached variables
+        run: |
+          echo $MY_VARIABLE 
+          echo $ANOTHER_VARIABLE
 
