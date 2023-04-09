@@ -146,6 +146,7 @@ jobs:
   
       - name: Use cached variables
         run: |
-         echo %gingertag 
-         echo %gingertag%
+          echo "${{ env.gingertag}}"
+          echo %gingertag 
+          echo %gingertag%
 
