@@ -141,6 +141,7 @@ jobs:
         run: |
           source version.txt
           echo $TAG
+          echo "gingernumber=$NUMBER" >> $GITHUB_ENV
           echo "gingertag=$TAG" >> $GITHUB_ENV
 
   
