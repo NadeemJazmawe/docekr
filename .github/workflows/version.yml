@@ -137,7 +137,5 @@ jobs:
           
       - name: Use cached variables
         run: |
-          source version.txt
-          echo %NUMBER 
-          echo $TAG
+          FOR /F %a in (version.txt) do set %a
 
