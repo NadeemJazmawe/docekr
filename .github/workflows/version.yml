@@ -136,6 +136,7 @@ jobs:
           type version.txt
           
       - name: Use cached variables
+        shell: cmd
         run: |
           for /f %i in ('type version.txt') do @(set %i)
     #      echo %NUMBER 
