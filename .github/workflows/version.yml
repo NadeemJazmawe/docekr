@@ -34,6 +34,7 @@ jobs:
           path: variables.txt
           key: ${{ runner.os }}-variables-${{ hashFiles('variables.txt') }}
       - name: Use cached variables
+        shell: bash
         run: source variables.txt && echo $MY_VARIABLE && echo $ANOTHER_VARIABLE
         
           
