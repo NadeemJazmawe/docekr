@@ -53,6 +53,7 @@ jobs:
       - name: create version environment variable - ALPHA
         if: ${{ github.event.inputs.revision != 0 }}
         run: |
+          echo nadeem
           beta_help_variable=${{ github.event.inputs.build }}
           beta_help_variable=$((beta_help_variable - 1))
           echo $beta_help_variable
