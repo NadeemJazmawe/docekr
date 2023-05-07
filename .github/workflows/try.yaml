@@ -3,22 +3,22 @@ name: CD
 on:
     workflow_dispatch: 
         inputs:
-            year:
-                type: number 
-                required: true
-                default: '23'
-            release:
-                type: number 
-                required: true
-                default: '1'
-            beta:
-                type: number 
-                required: true
-                default: '0'
-            alpha:
-                type: number 
-                required: true
-                default: '0'
+          major:
+            type: number 
+            required: true
+            default: '23'
+          minor:
+            type: number 
+            required: true
+            default: '1'
+          build:
+            type: number 
+            required: true
+            default: '0'
+          revision:
+            type: number 
+            required: true
+            default: '0'
 jobs:
     Create-version-Numbering:
         runs-on: ubuntu-latest
