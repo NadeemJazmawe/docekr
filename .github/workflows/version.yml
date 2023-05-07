@@ -58,7 +58,7 @@ jobs:
           beta_help_variable=$((beta_help_variable - 1))
           echo $beta_help_variable
           echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}-Alpha $beta_help_variable.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
-          echo "gingernumber=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
+          echo "gingernumber=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.$beta_help_variable.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
 
           
       - name: create version environment variable - BETA
