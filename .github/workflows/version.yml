@@ -54,7 +54,7 @@ jobs:
         if: ${{ github.event.inputs.revision != 0 }}
         run: |
           help_variable=${{ github.event.inputs.build }}
-          help_variable=$((help_variable + 10))
+          help_variable=$((help_variable - 1))
           echo $help_variable
           echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}-Alpha ${{ help_variable}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
           
