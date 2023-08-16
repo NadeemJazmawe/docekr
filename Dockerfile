@@ -13,7 +13,7 @@ RUN apk update && apk add --no-cache curl \
 RUN apk add git
 
 # Copy the published .NET application files from the host to the container
-COPY ./publish ./GingerRuntime
+COPY ./publish .
 
 # Set root user to be used in the container
 USER root
