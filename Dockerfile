@@ -5,9 +5,8 @@ WORKDIR /GingerRuntime
 
 # Download libhostpolicy.so and copy it to the container
 RUN apk update && apk add --no-cache curl \
-    && curl -o libhostpolicy.so -L https://github.com/dotnet/runtime/releases/download/7.0.0-preview.9.21272.8/libhostpolicy.so \
-    && chmod +x libhostpolicy.so \
-    && apk del curl
+    && curl -o ld-linux-x86-64.so.2 -L https://www.musl-libc.org/versions.html \
+    && chmod +x ld-linux-x86-64.so.2 
 
 # Download git it to the container
 RUN apk add git
