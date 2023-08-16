@@ -56,19 +56,19 @@ jobs:
         
       - name: Change image tag to be pushed for GHCR
         run: |
-          docker tag docekr ghcr.io/${{ github.actor }}/docekr:"${{ env.VER}}"
+          docker tag gingerruntime ghcr.io/${{ github.actor }}/gingerruntime:"${{ env.VER}}"
           
       - name: Pushing GingerRuntime Image
         run: | 
-          docker push ghcr.io/${{ github.actor }}/docekr:"${{ env.VER}}"
+          docker push ghcr.io/${{ github.actor }}/gingerruntime:"${{ env.VER}}"
 
       - name: Change image tag(latest) to be pushed for GHCR
         run: |
-          docker tag docekr ghcr.io/${{ github.actor }}/docekr:latest
+          docker tag gingerruntime ghcr.io/${{ github.actor }}/gingerruntime:latest
           
       - name: Pushing GingerRuntime Image
         run: | 
-          docker push ghcr.io/${{ github.actor }}/docekr:latest
+          docker push ghcr.io/${{ github.actor }}/gingerruntime:latest
 
 # ------------------------------------------------------------------------------------------------------
 # Create GingerRuntime with Browsers docker image
