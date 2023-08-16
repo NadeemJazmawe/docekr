@@ -23,7 +23,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  VER: 2023.1-Official
+  VER: 2023.2-Official
   
 jobs:
 
@@ -77,11 +77,11 @@ jobs:
         
       - name: Change image tag to be pushed for GHCR
         run: |
-          docker tag gingerruntime-browsers ghcr.io/${{ github.actor }}/gingerruntime-browsers:"${{ env.gingertag}}"
+          docker tag gingerruntime-browsers ghcr.io/${{ github.actor }}/gingerruntime-browsers:"${{ env.VER}}"
           
       - name: Pushing gingerruntime-browsers Image
         run: | 
-          docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:"${{ env.gingertag}}"
+          docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:"${{ env.VER}}"
 
       - name: Change image tag(latest) to be pushed for GHCR
         run: |
