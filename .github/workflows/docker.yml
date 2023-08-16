@@ -90,3 +90,28 @@ jobs:
       - name: Pushing gingerruntime-browsers Image
         run: | 
           docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
+
+# ------------------------------------------------------------------------------------------------------
+# Create Ginger  docker image [Switch to docker desktop containers]
+# ------------------------------------------------------------------------------------------------------
+      - name: Building ginger docker image
+        run: |
+          cd Ginger-image
+          dir
+          docker build -t ginger .
+        
+      - name: Change image tag to be pushed for GHCR
+        run: |
+          docker tag ginger ghcr.io/${{ github.actor }}/ginger:"${{env.VER}}"
+          
+      - name: Pushing Ginger Image
+        run: | 
+          docker push ghcr.io/${{ github.actor }}/ginger:"${{ env.VER}}"
+
+      - name: Change image tag to be pushed for GHCR
+        run: |
+          docker tag ginger ghcr.io/${{ github.actor }}/ginger:latest
+          
+      - name: Pushing Ginger Image
+        run: | 
+          docker push ghcr.io/${{ github.actor }}/ginger:latest
