@@ -49,7 +49,7 @@ jobs:
 # ------------------------------------------------------------------------------------------------------
       - name: Building GingerRuntime docker image
         run: |
-          docker build -t docekr .
+          docker build -t gingerruntime .
         
       - name: Change image tag to be pushed for GHCR
         run: |
@@ -72,7 +72,7 @@ jobs:
 # ------------------------------------------------------------------------------------------------------
       - name: Building gingerruntime-browsers docker image
         run: |
-          cd Ginger/GingerRuntime/Containers/Browsers
+          cd Docker-browser
           docker build -t gingerruntime-browsers .
         
       - name: Change image tag to be pushed for GHCR
