@@ -1,6 +1,6 @@
 FROM  mcr.microsoft.com/dotnet/aspnet:7.0-alpine
 
-COPY ./publish ./GingerRuntime
+COPY ./publish /
 
 USER root
 
@@ -11,5 +11,4 @@ RUN apk update && apk add --no-cache curl \
     && apk del curl
 RUN apk add git
 
-WORKDIR /GingerRuntime
 ENTRYPOINT ["dotnet", "GingerRuntime.dll"]
