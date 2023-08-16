@@ -1,4 +1,4 @@
-FROM  mcr.microsoft.com/dotnet/aspnet:7.0-alpine
+FROM  --platform=linux/amd64 mcr.microsoft.com/dotnet/aspnet:7.0-alpine 
 
 # Set the working directory inside the container
 WORKDIR /GingerRuntime
