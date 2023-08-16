@@ -1,6 +1,6 @@
 FROM  mcr.microsoft.com/dotnet/aspnet:7.0-alpine
 
-COPY ./publish /
+COPY ./publish ./
 
 USER root
 
