@@ -4,9 +4,12 @@ COPY ./publish ./GingerRuntime
 
 USER root
 
-RUN apk update
+# Download libhostpolicy.so and copy it to the container
+RUN apk update && apk add --no-cache curl \
+    && curl -o libhostpolicy.so -L https://github.com/dotnet/runtime/releases/download/7.0.0-preview.9.21272.8/libhostpolicy.so \
+    && chmod +x libhostpolicy.so \
+    && apk del curl
 RUN apk add git
-RUN apk add libc6-compat
 
 WORKDIR /GingerRuntime
 ENTRYPOINT ["dotnet", "GingerRuntime.dll"]
