@@ -3,9 +3,6 @@ name: docker
 on:
   workflow_dispatch: 
     inputs:
-      Version:
-        type: string 
-        required: true
       major:
         type: number 
         required: true
@@ -26,7 +23,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  VER: 2023.1-Alpha1.2
+  VER: 2023.1-Official
   
 jobs:
 
@@ -73,23 +70,23 @@ jobs:
 # ------------------------------------------------------------------------------------------------------
 # Create GingerRuntime with Browsers docker image
 # ------------------------------------------------------------------------------------------------------
-      # - name: Building gingerruntime-browsers docker image
-      #   run: |
-      #     cd Ginger/GingerRuntime/Containers/Browsers
-      #     docker build -t gingerruntime-browsers .
+      - name: Building gingerruntime-browsers docker image
+        run: |
+          cd Ginger/GingerRuntime/Containers/Browsers
+          docker build -t gingerruntime-browsers .
         
-      # - name: Change image tag to be pushed for GHCR
-      #   run: |
-      #     docker tag gingerruntime-browsers ghcr.io/${{ github.actor }}/gingerruntime-browsers:"${{ env.gingertag}}"
+      - name: Change image tag to be pushed for GHCR
+        run: |
+          docker tag gingerruntime-browsers ghcr.io/${{ github.actor }}/gingerruntime-browsers:"${{ env.gingertag}}"
           
-      # - name: Pushing gingerruntime-browsers Image
-      #   run: | 
-      #     docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:"${{ env.gingertag}}"
+      - name: Pushing gingerruntime-browsers Image
+        run: | 
+          docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:"${{ env.gingertag}}"
 
-      # - name: Change image tag(latest) to be pushed for GHCR
-      #   run: |
-      #     docker tag gingerruntime-browsers ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
+      - name: Change image tag(latest) to be pushed for GHCR
+        run: |
+          docker tag gingerruntime-browsers ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
           
-      # - name: Pushing gingerruntime-browsers Image
-      #   run: | 
-      #     docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
+      - name: Pushing gingerruntime-browsers Image
+        run: | 
+          docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
