@@ -6,7 +6,7 @@ USER root
 
 RUN apk update
 RUN apk add git
-RUN apt-get update && apt-get install -y libc6
+RUN apk add --no-cache libc6-compat
 
 WORKDIR /GingerRuntime
 ENTRYPOINT ["dotnet", "GingerRuntime.dll"]
