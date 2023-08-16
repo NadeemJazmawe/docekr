@@ -16,7 +16,7 @@ RUN apk add git
 COPY ./publish ./GingerRuntime
 
 # Set root user to be used in the container
-# USER root
+USER root
 
 # Set the entry point to run the main DLL file
 ENTRYPOINT ["dotnet", "GingerRuntime.dll"]
