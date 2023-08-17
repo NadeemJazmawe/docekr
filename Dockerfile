@@ -2,12 +2,12 @@ FROM  mcr.microsoft.com/dotnet/aspnet:7.0-alpine3.18
 # Set root user to be used in the container
 USER root
 # Set the working directory inside the container
-WORKDIR /lib
+# WORKDIR /lib
 
 # Download libhostpolicy.so and copy it to the container
-RUN apk update && apk add --no-cache curl \
-    && curl -o ld-linux-x86-64.so.2 -L https://www.musl-libc.org/versions.html \
-    && chmod +x ld-linux-x86-64.so.2 
+# RUN apk update && apk add --no-cache curl \
+#     && curl -o ld-linux-x86-64.so.2 -L https://www.musl-libc.org/versions.html \
+#     && chmod +x ld-linux-x86-64.so.2 
 
 # Download git it to the container
 RUN apk add git
