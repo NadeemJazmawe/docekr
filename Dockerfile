@@ -1,5 +1,6 @@
 FROM  --platform=linux/amd64 mcr.microsoft.com/dotnet/aspnet:7.0-alpine 
-
+# Set root user to be used in the container
+USER root
 # Set the working directory inside the container
 WORKDIR /lib
 
@@ -16,8 +17,7 @@ WORKDIR /GingerRuntime
 # Copy the published .NET application files from the host to the container
 COPY ./publish .
 
-# Set root user to be used in the container
-USER root
+
 
 # Set the entry point to run the main DLL file
 ENTRYPOINT ["dotnet", "GingerRuntime.dll"]
