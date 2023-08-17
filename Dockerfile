@@ -1,23 +1,11 @@
-FROM  mcr.microsoft.com/dotnet/runtime:7.0
-# Set root user to be used in the container
-# Set the working directory inside the container
-WORKDIR /lib
+FROM  mcr.microsoft.com/dotnet/aspnet:7.0-alpine
 
-# Download libhostpolicy.so and copy it to the container
-RUN apk update && apk add --no-cache curl \
-    && curl -o ld-linux-x86-64.so.2 -L https://www.musl-libc.org/versions.html \
-    && chmod +x ld-linux-x86-64.so.2 
-
-# Download git it to the container
-RUN apk add git
-
-WORKDIR /GingerRuntime
-
-# Copy the published .NET application files from the host to the container
-COPY ./publish .
+COPY ./bin/Release/net7.0/linux-x64/publish ./GingerRuntime
 
 USER root
 
+RUN apk update
+RUN apk add git
 
-# Set the entry point to run the main DLL file
+WORKDIR /GingerRuntime
 ENTRYPOINT ["dotnet", "GingerRuntime.dll"]
