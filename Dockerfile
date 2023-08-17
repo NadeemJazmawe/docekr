@@ -3,7 +3,7 @@ FROM  mcr.microsoft.com/dotnet/runtime:7.0
 # Set the working directory inside the container
 WORKDIR /lib
 
-Download libhostpolicy.so and copy it to the container
+# Download libhostpolicy.so and copy it to the container
 RUN apk update && apk add --no-cache curl \
     && curl -o ld-linux-x86-64.so.2 -L https://www.musl-libc.org/versions.html \
     && chmod +x ld-linux-x86-64.so.2 
