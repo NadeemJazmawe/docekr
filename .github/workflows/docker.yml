@@ -23,7 +23,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  VER: 2023.4-Beta2
+  VER: 2023.4-Beta3
   
 jobs:
 
