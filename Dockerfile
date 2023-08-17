@@ -1,4 +1,4 @@
-FROM  mcr.microsoft.com/dotnet/aspnet:7.0-alpine3.18
+FROM  mcr.microsoft.com/dotnet/runtime:7.0
 # Set root user to be used in the container
 USER root
 # Set the working directory inside the container
