@@ -1,7 +1,7 @@
 FROM  --platform=linux/amd64 mcr.microsoft.com/dotnet/aspnet:7.0-alpine 
 
 # Set the working directory inside the container
-WORKDIR /GingerRuntime
+WORKDIR /lib
 
 # Download libhostpolicy.so and copy it to the container
 RUN apk update && apk add --no-cache curl \
@@ -10,6 +10,8 @@ RUN apk update && apk add --no-cache curl \
 
 # Download git it to the container
 RUN apk add git
+
+WORKDIR /GingerRuntime
 
 # Copy the published .NET application files from the host to the container
 COPY ./publish .
