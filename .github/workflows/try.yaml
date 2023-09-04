@@ -1,68 +1,46 @@
-name: CD
+name: Deploy
 
 on:
     workflow_dispatch: 
-        inputs:
-          major:
-            type: number 
-            required: true
-            default: '23'
-          minor:
-            type: number 
-            required: true
-            default: '1'
-          build:
-            type: number 
-            required: true
-            default: '0'
-          revision:
-            type: number 
-            required: true
-            default: '0'
+    
+    workflow_call:
+
 jobs:
-    Create-version-Numbering:
-        runs-on: ubuntu-latest
-        
-        outputs:
-          version_number: ${{ steps.version.outputs.number }}
-          version_tag: ${{ steps.version.outputs.tag }}
+    Deploy-Project:
+      name: Deploy Releases to Github Release
+      runs-on: ubuntu-latest
+      steps:         
+# ------------------------------------------------------------------------------------------------------
+# Copy Ginger repo
+# ------------------------------------------------------------------------------------------------------
+          - uses: actions/checkout@v3
 
-        steps:           
-          - name: create version environment variable - alpha
-            if: ${{ github.event.inputs.revision != 0 }}
-            run: |
-                beta_help_variable=${{ github.event.inputs.build }}
-                beta_help_variable=$((beta_help_variable - 1))
-                echo $beta_help_variable
-                echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}-Alpha$beta_help_variable.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
-                echo "gingernumber=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.$beta_help_variable.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
-          
-          - name: create version environment variable - BETA
-            if: ${{ (github.event.inputs.build != 0) && (github.event.inputs.revision == 0 )}} 
-            run: |
-              echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}-Beta ${{ github.event.inputs.build}}" >> $GITHUB_ENV
-              echo "gingernumber=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
 
-          - name: create version environment variable - Release
-            if: ${{ (github.event.inputs.build == 0 ) && ( github.event.inputs.revision == 0) }} 
-            run: |
-              echo "gingertag=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}-Official" >> $GITHUB_ENV
-              echo "gingernumber=${{ github.event.inputs.major}}.${{ github.event.inputs.minor}}.${{ github.event.inputs.build}}.${{ github.event.inputs.revision}}" >> $GITHUB_ENV
-
-          - name: create environment variable 
-            id: version
-            run: |
-              echo "number=${{ env.gingernumber}}" >> $GITHUB_OUTPUT
-              echo "tag=${{ env.gingertag}}" >> $GITHUB_OUTPUT
-
-          - name: create version variable text file
-            run: |
-              echo "NUMBER=${{env.gingernumber}}" > version.txt
-              echo "TAG=${{ env.gingertag}}" >> version.txt
-              cat version.txt
-          
-          - name: 'Upload static site content'
-            uses: actions/upload-artifact@v3
+# ------------------------------------------------------------------------------------------------------
+# Create new Release for ginger
+# ------------------------------------------------------------------------------------------------------
+          - name: Create Github new Release
+            id: create-new-release
+            uses: actions/create-release@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
             with:
-              name: ginger-version
-              path: ./version.txt
+              tag_name: v1.2.3
+              release_name: Release v1.2.3
+              draft: true
+
+
+
+# ------------------------------------------------------------------------------------------------------
+# Upload Ginger Documents to Github Releases 
+# ------------------------------------------------------------------------------------------------------
+          - name: Upload Assest to Github Releases - Ginger.Release.Notes.pdf
+            if: ( !(contains(env.gingertag , 'Beta' )) && !(contains(env.gingertag , 'Alpha' )) )
+            uses: actions/upload-release-asset@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              upload_url: ${{ steps.create-new-release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+              asset_path: ./variable.txt
+              asset_name: Ginger.Release.Notes.pdf
+              asset_content_type: application/doc
