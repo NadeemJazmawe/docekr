@@ -29,6 +29,7 @@ jobs:
           #       delete_release: true #(optional) default: true 
               
           - name: Recreate Release
+            id: create-new-release
             uses: GongT/actions-recreate-release@v1
             env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
