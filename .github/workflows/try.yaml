@@ -22,27 +22,30 @@ jobs:
 # ------------------------------------------------------------------------------------------------------
 # Create new Release for ginger
 # ------------------------------------------------------------------------------------------------------
-
-          - name: Recreate Release
-            uses: GongT/actions-recreate-release@v1
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          - uses: cb80/delrel@latest
             with:
-              tag_name: v2.2.4
-              release_name: Release v2.2.4
-              draft: true
-              prerelease: false
+              tag: v2.2.3
+              
+          # - name: Recreate Release
+          #   uses: GongT/actions-recreate-release@v1
+          #   env:
+          #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #   with:
+          #     tag_name: v2.2.4
+          #     release_name: Release v2.2.4
+          #     draft: true
+          #     prerelease: false
 
               
-          # - name: Create Github new Release
-          #   id: create-new-release
-          #   uses: actions/create-release@v1
-          #   env:
-          #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-          #   with:
-          #     tag_name: v2.2.3
-          #     release_name: Release v2.2.3
-          #     draft: true
+          - name: Create Github new Release
+            id: create-new-release
+            uses: actions/create-release@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+            with:
+              tag_name: v2.2.3
+              release_name: Release v2.2.3
+              draft: true
 
 
 
