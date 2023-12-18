@@ -10,7 +10,7 @@ RUN yum -y update
 RUN yum -y install libicu.x86_64
 # Set the working directory
 
-RUN yum -y install firefox
+# RUN yum -y install firefox
 
 RUN yum -y install chromium
 RUN yum -y install chromium-chromedriver
