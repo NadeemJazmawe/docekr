@@ -2,10 +2,10 @@ FROM ghcr.io/nadeemjazmawe/gingerruntime:latest
 
 USER root
 
-RUN apk add firefox
+RUN yum install firefox
 
-RUN apk add chromium
-RUN apk add chromium-chromedriver
+RUN yum install chromium
+RUN yum install chromium-chromedriver
 
 ENV CHROME_BIN=/usr/bin/chromium-browser \
     CHROME_PATH=/usr/lib/chromium/
