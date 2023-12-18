@@ -5,7 +5,7 @@ USER root
 # RUN yum  
 # RUN yum install 
 
-RUN yum install firefox
+RUN yum -y install firefox
 
 RUN yum -y install chromium
 RUN yum -y install chromium-chromedriver
