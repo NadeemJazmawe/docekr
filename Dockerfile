@@ -1,6 +1,6 @@
 FROM redhat/ubi8
 # Copy your application code into the container
-COPY ./code /GingerRuntime
+COPY ./Runtime /GingerRuntime
 
 # Switch to root user for installation
 USER root
