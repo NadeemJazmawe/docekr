@@ -1,12 +1,16 @@
-FROM  mcr.microsoft.com/dotnet/aspnet:7.0-alpine
+FROM redhat/ubi8
+# Copy your application code into the container
+COPY ./code /GingerRuntime
 
-COPY ./Runtime ./GingerRuntime
-
-
+# Switch to root user for installation
 USER root
 
-RUN apk update
-RUN apk add git
-
+# Install the .NET SDK and other required packages
+RUN yum -y update
+RUN yum -y install libicu.x86_64
+# Set the working directory
 WORKDIR /GingerRuntime
-ENTRYPOINT ["dotnet", "GingerRuntime.dll"]
+
+# Specify the entry point to start your ASP.NET application
+#ENTRYPOINoT ["dotnet", "GingerRuntime.dll"]
+CMD ["./GingerRuntime"]
