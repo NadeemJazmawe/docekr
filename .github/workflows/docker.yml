@@ -57,7 +57,7 @@ jobs:
 
       - name: Building gingerruntime-browsers docker image
         run: |
-          cd /Containers
+          cd Containers
           docker build -t gingerruntime-browsers .
         
       - name: Change image tag to be pushed for GHCR
