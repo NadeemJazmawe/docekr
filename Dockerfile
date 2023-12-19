@@ -10,6 +10,10 @@ USER root
 
 # Install the .NET SDK and other required packages
 RUN yum -y update
+RUN apk update
+RUN apk add git
+
+
 # Set the working directory
 WORKDIR /GingerRuntime
 
