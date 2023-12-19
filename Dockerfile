@@ -1,4 +1,4 @@
-FROM redhat/ubi8
+FROM  mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
