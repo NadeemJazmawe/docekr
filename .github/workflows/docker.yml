@@ -55,17 +55,17 @@ jobs:
           docker push ghcr.io/${{ github.actor }}/gingerruntime:latest
 
 
-      # - name: Building gingerruntime-browsers docker image
-      #   run: |
-      #     cd Containers
-      #     docker build -t gingerruntime-browsers .
+      - name: Building gingerruntime-browsers docker image
+        run: |
+          cd Containers
+          docker build -t gingerruntime-browsers .
         
-      # - name: Change image tag to be pushed for GHCR
-      #   run: |
-      #     docker tag gingerruntime-browsers ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
+      - name: Change image tag to be pushed for GHCR
+        run: |
+          docker tag gingerruntime-browsers ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
           
-      # - name: Pushing gingerruntime-browsers Image
-      #   run: | 
-      #     docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
+      - name: Pushing gingerruntime-browsers Image
+        run: | 
+          docker push ghcr.io/${{ github.actor }}/gingerruntime-browsers:latest
 
 
