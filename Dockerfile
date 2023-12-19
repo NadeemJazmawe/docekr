@@ -3,7 +3,7 @@ FROM  mcr.microsoft.com/dotnet/aspnet:6.0-alpine
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
 # Copy your application code into the container
-COPY ./Runtime/publish /GingerRuntime
+COPY ./Runtime /GingerRuntime
 
 # Switch to root user for installation
 USER root
