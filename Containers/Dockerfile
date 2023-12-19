@@ -2,6 +2,8 @@ FROM ghcr.io/nadeemjazmawe/gingerruntime:latest
 
 USER root
 
+RUN apk update
+
 RUN apk add firefox
 
 RUN apk add chromium
