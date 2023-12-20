@@ -4,7 +4,7 @@ USER root
 
 RUN apt update
 
-RUN apt install firefox
+RUN apt install -y firefox
 
 RUN apt install chromium
 RUN apt install chromium-chromedriver
