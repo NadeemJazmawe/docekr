@@ -2,12 +2,12 @@ FROM ghcr.io/nadeemjazmawe/gingerruntime:latest
 
 USER root
 
-RUN apk update
+RUN apt update
 
-RUN apk add firefox
+RUN apt install firefox
 
-RUN apk add chromium
-RUN apk add chromium-chromedriver
+RUN apt install chromium
+RUN apt install chromium-chromedriver
 
 ENV CHROME_BIN=/usr/bin/chromium-browser \
     CHROME_PATH=/usr/lib/chromium/
