@@ -1,5 +1,7 @@
 # FROM  mcr.microsoft.com/dotnet/aspnet:7.0-alpine
-FROM mcr.microsoft.com/dotnet/sdk:7.0
+# FROM mcr.microsoft.com/dotnet/sdk:7.0 ----> Workin !!!!!!
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
+
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
 # Copy your application code into the container
