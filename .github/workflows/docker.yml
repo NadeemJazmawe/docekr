@@ -29,7 +29,9 @@ jobs:
       - name: Change gingerRuntime files to be Execuable 
         run: |
           ls
+          sudo apt install dos2unix
           find ./Runtime -type f -print0 | xargs -0 chmod +x
+          find ./Runtime -type f -print0 | xargs -0 dos2unix
 
 
 # ------------------------------------------------------------------------------------------------------
