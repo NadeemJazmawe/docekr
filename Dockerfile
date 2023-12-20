@@ -8,9 +8,9 @@ COPY ./Runtime /GingerRuntime
 # Switch to root user for installation
 USER root
 
-# Install the .NET SDK and other required packages
-RUN apk update
-RUN apk add git
+# # Install the .NET SDK and other required packages
+# RUN apk update
+# RUN apk add git
 
 # RUN apk install libicu.x86_64
 
