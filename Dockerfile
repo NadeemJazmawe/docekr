@@ -12,7 +12,7 @@ USER root
 
 # # Install the .NET SDK and other required packages
 RUN apt update
-RUN apt install git
+RUN apt install -y git
 
 # RUN apk install libicu.x86_64
 
