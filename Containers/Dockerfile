@@ -14,7 +14,6 @@ ENV CHROME_BIN=/usr/bin/chromium-browser \
 
 RUN export PATH=$PATH:/usr/lib/chromium/
 
-USER guest
 
 WORKDIR /GingerRuntime
 ENTRYPOINT ["dotnet", "GingerRuntime.dll"]
