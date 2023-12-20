@@ -10,7 +10,7 @@ USER root
 
 # Install the .NET SDK and other required packages
 RUN yum -y update
-RUN yum -y install libicu.x86_64
+# RUN yum -y install libicu.x86_64
 # Set the working directory
 
 # RUN yum -y install firefox
